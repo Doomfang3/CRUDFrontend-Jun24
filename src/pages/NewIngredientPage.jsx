@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { API_URL } from '../helpers/constants'
 import classes from '../styles/NewIngredientPage.module.css'
 
 const NewIngredientPage = () => {
@@ -8,7 +7,7 @@ const NewIngredientPage = () => {
   const handleSubmit = async event => {
     event.preventDefault()
     try {
-      const response = await fetch(`${API_URL}/ingredients`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/ingredients`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

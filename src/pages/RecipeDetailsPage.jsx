@@ -1,5 +1,4 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { API_URL } from '../helpers/constants'
 import { useEffect, useState } from 'react'
 import { Button } from '@mantine/core'
 import { IconTrash } from '@tabler/icons-react'
@@ -11,7 +10,7 @@ const RecipeDetailsPage = () => {
 
   const fetchDetails = async () => {
     try {
-      const response = await fetch(`${API_URL}/recipes/${recipeId}`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/recipes/${recipeId}`)
       if (!response.ok) {
         throw new Error('Error fetching recipe details', response)
       }
@@ -27,7 +26,7 @@ const RecipeDetailsPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${API_URL}/recipes/${recipeId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/recipes/${recipeId}`, {
         method: 'DELETE',
       })
       if (response.ok) {

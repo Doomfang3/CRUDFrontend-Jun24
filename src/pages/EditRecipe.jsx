@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { API_URL } from '../helpers/constants'
 import { Button, MultiSelect, TextInput } from '@mantine/core'
 
 /* {
@@ -26,7 +25,7 @@ export default function EditRecipe() {
   const handleSubmit = async event => {
     event.preventDefault()
     try {
-      const response = await fetch(`${API_URL}/recipes/${recipeId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/recipes/${recipeId}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
@@ -43,7 +42,7 @@ export default function EditRecipe() {
 
   const fetchAllIngredients = async () => {
     try {
-      const response = await fetch(`${API_URL}/ingredients`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/ingredients`)
       if (response.ok) {
         const ingredientsData = await response.json()
         setIngredientsData(ingredientsData)
@@ -60,7 +59,7 @@ export default function EditRecipe() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await fetch(`${API_URL}/recipes/${recipeId}`)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/recipes/${recipeId}`)
         if (response.ok) {
           const recipeData = await response.json()
           setTitle(recipeData.title)

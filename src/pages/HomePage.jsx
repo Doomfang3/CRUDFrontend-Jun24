@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { API_URL } from '../helpers/constants'
 import { Link } from 'react-router-dom'
 
 const HomePage = () => {
@@ -7,7 +6,7 @@ const HomePage = () => {
 
   const fetchAllRecipes = async () => {
     try {
-      const response = await fetch(`${API_URL}/recipes`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/recipes`)
 
       if (response.ok) {
         const recipesData = await response.json()

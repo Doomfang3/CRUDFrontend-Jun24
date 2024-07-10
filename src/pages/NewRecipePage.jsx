@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { API_URL } from '../helpers/constants'
 import { useNavigate } from 'react-router-dom'
 import classes from '../styles/NewRecipePage.module.css'
 import { Button, MultiSelect, TextInput } from '@mantine/core'
@@ -17,7 +16,7 @@ const NewRecipePage = () => {
   const handleSubmit = async event => {
     event.preventDefault()
     try {
-      const response = await fetch(`${API_URL}/recipes`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/recipes`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -34,7 +33,7 @@ const NewRecipePage = () => {
 
   const fetchAllIngredients = async () => {
     try {
-      const response = await fetch(`${API_URL}/ingredients`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/ingredients`)
       if (response.ok) {
         const ingredientsData = await response.json()
         setIngredients(ingredientsData)
